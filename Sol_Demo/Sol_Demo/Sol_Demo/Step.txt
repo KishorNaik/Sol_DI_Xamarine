@@ -1,0 +1,9 @@
+﻿Step 1:
+Download following nuget package.
+
+MVVM Helper
+Install-Package Refractored.MvvmHelpers -Version 1.6.2
+
+Depedency Injecttion
+Microsoft.Extension.DepedencyInjection
+
