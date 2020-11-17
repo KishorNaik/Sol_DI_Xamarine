@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Sol_Demo.Services;
 using Sol_Demo.ViewModels;
+using Sol_Demo.Views;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

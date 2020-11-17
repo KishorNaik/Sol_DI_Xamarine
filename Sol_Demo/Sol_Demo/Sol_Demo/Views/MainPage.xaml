@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Sol_Demo.Views.MainPage"
+             x:Name="frmMain">
+
+    <StackLayout>
+        <Entry x:Name="txtFirstName" Text="{Binding UserM.FirstName, Mode=TwoWay}" HeightRequest="60" Placeholder="First Name" PlaceholderColor="Red"></Entry>
+        <Entry x:Name="txtLastName" Text="{Binding UserM.LastName, Mode=TwoWay}" HeightRequest="50" Placeholder="Last Name" PlaceholderColor="Red"></Entry>
+        <Button Text="Submit" Command="{Binding DisplayCommand}" IsEnabled="{Binding UserUiM.IsCancelEnabled}"></Button>
+        <Button Text="Cancel"
+                Command="{Binding CancelCommand}"
+                CommandParameter="{Binding Source={x:Reference frmMain}}"
+                IsEnabled="{Binding UserUiM.IsSubmitEnabled}">
+        </Button>
+        <Label Text="{Binding Display, Mode=OneWay}" />
+    </StackLayout>
+</ContentPage>

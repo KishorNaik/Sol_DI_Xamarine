@@ -1,6 +1,7 @@
 ﻿using MvvmHelpers;
 using Sol_Demo.Models;
 using Sol_Demo.Services;
+using Sol_Demo.UiModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -16,10 +17,12 @@ namespace Sol_Demo.ViewModels
         public UserViewModel(IUserService userService)
         {
             this.userService = userService;
-            UserM = new UserModel();
 
-            IsCancelEnabled = true;
-            IsSubmitEnabled = false;
+            UserM = new UserModel();
+            UserUiM = new UserUiModel();
+
+            UserUiM.IsCancelEnabled = true;
+            UserUiM.IsSubmitEnabled = false;
 
             DisplayCommand = new Command(() => this.OnDisplay());
             CancelCommand = new Command<ContentPage>((contentPage) => this.OnCancel(contentPage));
@@ -33,28 +36,20 @@ namespace Sol_Demo.ViewModels
             set => base.SetProperty(ref userM, value);
         }
 
+        private UserUiModel userUiM;
+
+        public UserUiModel UserUiM
+        {
+            get => userUiM;
+            set => base.SetProperty(ref userUiM, value);
+        }
+
         private String display;
 
         public String Display
         {
             get => display;
             set => SetProperty(ref display, value);
-        }
-
-        private bool isCancelEnabled;
-
-        public bool IsCancelEnabled
-        {
-            get => isCancelEnabled;
-            set => base.SetProperty(ref isCancelEnabled, value);
-        }
-
-        private bool isSubmitEnabled;
-
-        public bool IsSubmitEnabled
-        {
-            get => isSubmitEnabled;
-            set => base.SetProperty(ref isSubmitEnabled, value);
         }
 
         public ICommand DisplayCommand { get; set; }
@@ -64,8 +59,8 @@ namespace Sol_Demo.ViewModels
         private void OnDisplay()
         {
             Display = userService.DisplayUsers(UserM);
-            IsCancelEnabled = false;
-            IsSubmitEnabled = true;
+            UserUiM.IsCancelEnabled = false;
+            UserUiM.IsSubmitEnabled = true;
         }
 
         private void OnCancel(ContentPage contentPage)
@@ -73,8 +68,8 @@ namespace Sol_Demo.ViewModels
             Display = String.Empty;
             UserM.FirstName = String.Empty;
             UserM.LastName = String.Empty;
-            IsSubmitEnabled = false;
-            IsCancelEnabled = true;
+            UserUiM.IsSubmitEnabled = false;
+            UserUiM.IsCancelEnabled = true;
 
             Entry entryObj = contentPage.FindByName<Entry>("txtFirstName");
             entryObj.Focus();

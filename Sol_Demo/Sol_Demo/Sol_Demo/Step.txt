@@ -7,3 +7,22 @@ Install-Package Refractored.MvvmHelpers -Version 1.6.2
 Depedency Injecttion
 Microsoft.Extension.DepedencyInjection
 
+Step 2:
+Create a User Model Class inside the Models folder [Check Source Code].
+
+Step 3:
+Creata a User Ui Model Class inside the UiModels folder. [Check Source Code]
+
+Step 4:
+Create User Service class inside the Services folder. [Check Souce Code]
+
+Step 5:
+Create User View Model class inside the ViewModels folder. [Check Source code]
+
+Step 6:
+Create MainPage.xaml page inside the Views Folder. [Check Source Code]
+
+Step 7:
+Configure Di Setup on App.xaml.cs file [Check Source Code]
+
+Run the App
